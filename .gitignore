@@ -1,0 +1,13 @@
+# Build artifacts
+docs/
+build/
+*.o
+*.so
+*.EFI
+*.bin
+*.img
+
+# IDE
+*.swp
+*.swo
+*.ini

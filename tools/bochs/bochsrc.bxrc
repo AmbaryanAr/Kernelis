@@ -1,0 +1,52 @@
+# ============================================================
+# Bochs Configuration for 64-bit OS Development
+# ============================================================
+
+megs: 512
+romimage: file=$BXSHARE/i440fx.bin
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+vga: extension=vbe, update_freq=60
+boot: c
+ata0: enabled=true, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=disk, path=$DISK_IMG, mode=flat
+
+config_interface: win32config
+display_library: win32, options="gui_debug"
+magic_break: enabled=1
+
+# ============================================================
+# ПРОЦЕССОР (на x86-64)
+# ============================================================
+cpu: count=2, ips=4000000, model=corei7_skylake_x, reset_on_triple_fault=1, cpuid_limit_winnt=0, ignore_bad_msrs=1, mwait_is_nop=0
+
+# С ПОДДЕРЖКОЙ 64 БИТНОГО РЕЖИМА
+#    athlon64_clawhammer          — AMD (архитектура K8), 2003 год;
+#    athlon64_venice              — Clawhammer, 2004 год;
+#    turion64_tyler               — мобильный Athlon, 2005 год;
+#    phenom_8650_toliman          — первый многоядерный 64 битный процессор AMD (4 ядра), 2007 год;
+#    ryzen                        — современная архитектура AMD (Zen и новее), 2017 год и позже;
+#    zambezi                      — процессор AMD FX (архитектура Bulldozer), 2011 год;
+#    trinity_apu                  — гибридный процессор AMD (APU) с интегрированной графикой, 2012 год;
+#    corei5_lynnfield_750         — Intel Core i5 (архитектура Nehalem), 2009 год;
+#    corei5_arrandale_m520        — мобильный Core i5 (Westmere), 2010 год;
+#    corei7_sandy_bridge_2600k    — Intel Core i7 (Sandy Bridge), 2011 год;
+#    corei7_ivy_bridge_3770k      — Intel Core i7 (Ivy Bridge), 2012 год;
+#    corei7_haswell_4770          — Intel Core i7 (Haswell), 2013 год;
+#    broadwell_ult                — Intel Broadwell (ультрамобильные версии), 2014 год;
+#    corei7_skylake_x             — Intel Skylake (высокопроизводительные версии), 2015 год;
+#    corei3_cnl                   — Intel Core i3 (Cannon Lake), 2018 год;
+#    corei7_icelake_u             — Intel Ice Lake (мобильные версии с Gen11 iGPU), 2019 год;
+#    tigerlake                    — Intel Tiger Lake, 2020 год;
+#    sapphire_rapids              — Intel Sapphire Rapids (серверные и HPC‑процессоры), 2022 год.
+
+# БЕЗ ПОДДЕРЖКИ 6 БИТНОГО РЕЖИМА (ТОЛЬКО 32 БИТ)
+#    bx_generic                     — обобщённая модель Bochs, эмулирует базовый 32‑битный x86;
+#    pentium                        — первое поколение суперскалярных x86‑процессоров (1993), только 32 бит;
+#    pentium_mmx                    — Pentium с набором инструкций MMX (1997), 32 бит;
+#    amd_k6_2_chomper               — AMD K6 2 (1998), поддержка 3DNow!, но только 32 бит;
+#    p2_klamath                     — Intel Pentium II (1997), архитектура P6, 32 бит;
+#    p3_katmai                      — Intel Pentium III (1999), поддержка SSE, но 32 бит;
+#    p4_willamette                  — Intel Pentium 4 (2000), архитектура NetBurst, 32 бит;
+#    p4_prescott_celeron_336        — Celeron на ядре Prescott (2004), 32 бит;
+#    core_duo_t2400_yonah           — Intel Core Duo (2006), первое поколение Core, 32 бит (не поддерживает EM64T);
+#    atom_n270                      — Intel Atom (2008), энергоэффективный 32 битный процессор для нетбуков.
